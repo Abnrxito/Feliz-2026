@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url("../img/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 30px;
+    animation: fadeIn 2s ease;
+    position: relative;
+}
+
+/* Overlay oscuro */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+/* ⭐ ESTRELLAS FUGACES */
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.stars span {
+    position: absolute;
+    top: -10%;
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(transparent, rgba(255,255,255,0.9));
+    animation: shooting 6s linear infinite;
+    opacity: 0.8;
+}
+
+.stars span:nth-child(1) { left: 15%; animation-delay: 0s; }
+.stars span:nth-child(2) { left: 35%; animation-delay: 1.5s; }
+.stars span:nth-child(3) { left: 55%; animation-delay: 3s; }
+.stars span:nth-child(4) { left: 75%; animation-delay: 4.5s; }
+.stars span:nth-child(5) { left: 50%; animation-delay: 6s; }
+
+@keyframes shooting {
+    0% { transform: translateY(0) rotate(20deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(120vh) rotate(20deg); opacity: 0; }
+}
+
+/* Título */
+h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.9),
+        0 0 14px #ff9acb,
+        0 0 25px #ff9acb;
+    position: relative;
+    z-index: 2;
+}
+
+/* 🐱 CONTENEDOR GATO */
+.gato-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animación flotante */
+@keyframes floatSoft {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+    100% { transform: translateY(0); }
+}
+
+/* 🐱 GATO RESPONSIVE */
+.gato-flotante {
+    width: clamp(260px, 35vw, 420px);
+    animation: floatSoft 4.5s ease-in-out infinite;
+    filter: drop-shadow(0 25px 30px rgba(0,0,0,.45));
+}
+
+/* Texto */
+.mensaje {
+    margin-top: 20px;
+    font-size: clamp(35%, 2.5vw, 30px);
+    color: #f5f5f5;
+    text-shadow: 0 0 6px rgba(255,182,193,0.9);
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+/* Botón */
+.btn {
+    margin-top: 25px;
+    font-size: 16px;
+    color: #ffd1e8;
+    text-decoration: underline;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 6px rgba(255,150,200,0.9);
+}
+
+/* 🎵 Controles música */
+.music-controls {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.music-controls button {
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.music-controls button:active {
+    transform: scale(0.95);
+}
+
+/* Fade entrada */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Fade salida */
+.fade-out {
+    animation: fadeOut 1.2s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

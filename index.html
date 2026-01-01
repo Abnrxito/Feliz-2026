@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz Año Nuevo ❤️</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Para móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- ✨ ESTRELLAS FUGACES -->
+    <div class="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <h1>Feliz año nuevo mi amor ✨</h1>
+
+    <!-- 🐱 GATO CENTRADO -->
+    <div class="gato-box">
+        <img src="img/gato.png" class="gato-flotante" alt="Gatito">
+    </div>
+
+    <p class="mensaje">
+        Gracias por llegar a mi vida, no sabes cuánto te amo 💗
+    </p>
+
+    <!-- 🎵 MÚSICA -->
+    <audio id="musica" loop>
+        <source src="audio/Paradise.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <!-- 🎵 CONTROLES -->
+    <div class="music-controls">
+        <button onclick="playMusic()">▶️ Música</button>
+        <button onclick="pauseMusic()">⏸️ Pausa</button>
+    </div>
+
+    <!-- 🔥 SCRIPTS -->
+    <script>
+        const musica = document.getElementById("musica");
+
+        function playMusic() {
+            musica.play();
+        }
+
+        function pauseMusic() {
+            musica.pause();
+        }
+
+        // Autoplay tras primer toque (móviles)
+        document.body.addEventListener("click", () => {
+            if (musica.paused) {
+                musica.play().catch(() => {});
+            }
+        }, { once: true });
+
+        // Transición romántica
+        function transicionar(e) {
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = e.target.href;
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
